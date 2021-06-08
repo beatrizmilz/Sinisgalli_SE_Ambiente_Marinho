@@ -16,3 +16,5 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
     magrittr
+URL: https://github.com/beatrizmilz/Sinisgalli_SE_Ambiente_Marinho
+BugReports: https://github.com/beatrizmilz/Sinisgalli_SE_Ambiente_Marinho/issues
