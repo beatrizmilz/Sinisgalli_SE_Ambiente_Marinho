@@ -15,6 +15,16 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
-    magrittr
+    dplyr,
+    fs,
+    glue,
+    googledrive,
+    janitor,
+    magrittr,
+    purrr,
+    stringr,
+    tibble
 URL: https://github.com/beatrizmilz/Sinisgalli_SE_Ambiente_Marinho
 BugReports: https://github.com/beatrizmilz/Sinisgalli_SE_Ambiente_Marinho/issues
+Depends: 
+    R (>= 2.10)
