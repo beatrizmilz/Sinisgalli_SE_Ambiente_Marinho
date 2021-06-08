@@ -3,4 +3,5 @@
 .Rdata
 .httr-oauth
 .DS_Store
-data-raw/arquivos/
+data-raw/1-arquivos-pdf/
+data-raw/2-texto-arquivos/
