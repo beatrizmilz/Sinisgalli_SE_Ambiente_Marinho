@@ -1,6 +1,7 @@
 ## code to prepare `dados-drive` dataset goes here
 
-# usethis::use_data(dados-drive, overwrite = TRUE)
+
+library(magrittr, include.only = "%>%")
 
 # Primeiro vamos baixar os dados! --------------
 
@@ -20,8 +21,11 @@ lista_de_arquivos <- googledrive::drive_ls(
   ) %>%
   dplyr::relocate(nome_limpo, .after = name)
 
+usethis::use_data(lista_de_arquivos, overwrite = TRUE)
+
+
 # Criar uma pasta para fazer download dos arquivos
-fs::dir_create("data-raw/arquivos")
+fs::dir_create("data-raw/1-arquivos-pdf")
 
 # Criar uma função para baixar os arquivos
 baixar_arquivo <- function(indice) {
@@ -29,7 +33,7 @@ baixar_arquivo <- function(indice) {
     tibble::rowid_to_column() %>%
     dplyr::filter(rowid == indice)
 
-  caminho_arquivo <- glue::glue("data-raw/arquivos/{arquivo$nome_limpo}")
+  caminho_arquivo <- glue::glue("data-raw/1-arquivos-pdf/{arquivo$nome_limpo}")
 
   if(as.vector(fs::file_exists(caminho_arquivo)) == FALSE){
     googledrive::drive_download(
@@ -45,4 +49,4 @@ baixar_arquivo <- function(indice) {
 purrr::map_dfr(.x = 1:nrow(lista_de_arquivos), .f = baixar_arquivo)
 
 # Ver quais são os arquivos baixados
-fs::dir_ls("data-raw/arquivos/") %>% length()
+fs::dir_ls("data-raw/1-arquivos-pdf/") %>% length()
