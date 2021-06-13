@@ -1,4 +1,4 @@
-
+devtools::load_all()
 # Frases para buscar -----------
 servicos_ecosistemicos <- c("servicos ecossistemicos|ecosystem services")
 
@@ -52,33 +52,18 @@ df_limpo %>%
     p_servicos_ecosistemicos = detect_mces(servicos_ecosistemicos),
     p_food_provision = detect_mces(food_provision),
     p_water_storage_and_provision = detect_mces(water_storage_and_provision),
-    p_water_storage_and_provision = detect_mces(biotic_materials_and_biofuels),
     p_biotic_materials_and_biofuels = detect_mces(biotic_materials_and_biofuels),
-
-
-    p_water_purification = detect_mces(...),
-
-    p_air_quality_regulation = detect_mces(...),
-
-    p_coastal_protection = detect_mces(...),
-
-    p_climate_regulation = detect_mces(...),
-
-    p_weather_regulation = detect_mces(...),
-
-    p_ocean_nourishment = detect_mces(...),
-
-    p_life_cycle_maintenance = detect_mces(...),
-
-    p_biological_regulation = detect_mces(...),
-
-    p_symbolic_and_aesthetic_values = detect_mces(...),
-
-    p_recreation_and_tourism = detect_mces(...),
-
-    p_cognitive_effects = detect_mces(...),
-
-
+    p_water_purification = detect_mces(water_purification),
+    p_air_quality_regulation = detect_mces(air_quality_regulation),
+    p_coastal_protection = detect_mces(coastal_protection),
+    p_climate_regulation = detect_mces(climate_regulation),
+    p_weather_regulation = detect_mces(weather_regulation),
+    p_ocean_nourishment = detect_mces(ocean_nourishment),
+    p_life_cycle_maintenance = detect_mces(life_cycle_maintenance),
+    p_biological_regulation = detect_mces(biological_regulation),
+    p_symbolic_and_aesthetic_values = detect_mces(symbolic_and_aesthetic_values),
+    p_recreation_and_tourism = detect_mces(recreation_and_tourism),
+    p_cognitive_effects = detect_mces(cognitive_effects)
   ) %>%
 
   View()
