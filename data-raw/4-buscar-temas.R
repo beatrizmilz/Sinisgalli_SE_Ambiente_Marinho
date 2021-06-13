@@ -140,3 +140,15 @@ resultado_busca <- df_limpo %>%
     tidyr::pivot_longer(cols = tidyselect::starts_with("p_")) %>%
     dplyr::filter(value == TRUE) %>%
     dplyr::count(name, sort = TRUE)
+
+
+  resultado_busca %>%
+   tidyr::pivot_longer(cols = tidyselect::starts_with("p_")) %>%
+   dplyr::filter(value == TRUE) %>%
+    dplyr::mutate(tema = stringr::str_remove(name,"p_"),
+                  tema = stringr::str_replace_all(tema, "_", " "),
+                  nome_arquivo = stringr::str_remove(nome_arquivo, "data-raw/1-arquivos-pdf/")) %>%
+    dplyr::select(-name, -value) %>%
+    dplyr::group_by(nome_arquivo, tema) %>%
+    dplyr::summarise(pagina = knitr::combine_words(num_pagina, and = " e ")) %>%
+    View()
