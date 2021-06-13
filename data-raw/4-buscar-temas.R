@@ -1,38 +1,106 @@
 devtools::load_all()
 # Frases para buscar -----------
-servicos_ecosistemicos <- c("servicos ecossistemicos|ecosystem services")
+
+servicos_ecosistemicos <-
+  c("servicos ecossistemicos|ecosystem services")
 
 ## MCES -------------
-food_provision <- c("food provision", "provisao de alimentos", "alimento", "food", "fishing", "pesca", "fisheries", "aquaculture", "aquacultura", "pescaria")
+food_provision <-
+  c(
+    "food provision",
+    "provisao de alimentos",
+    "alimento",
+    "food",
+    "fishing",
+    "pesca",
+    "fisheries",
+    "aquaculture",
+    "aquacultura",
+    "pescaria"
+  )
 
-water_storage_and_provision <- c("water storage", "water provision", "coastal lake", "deltaic aquifer", "desaliation", "marine water", "armazenamento de agua", "provisao de agua", "aproveitamento de agua")
+water_storage_and_provision <-
+  c(
+    "water storage",
+    "water provision",
+    "coastal lake",
+    "deltaic aquifer",
+    "desaliation",
+    "marine water",
+    "armazenamento de agua",
+    "provisao de agua",
+    "aproveitamento de agua"
+  )
 
-biotic_materials_and_biofuels <- c("biotic materials", "biofuels", "materiais bioticos", "biotico", "biocombustivel", "biocombustiveis")
+biotic_materials_and_biofuels <-
+  c(
+    "biotic materials",
+    "biofuels",
+    "materiais bioticos",
+    "biotico",
+    "biocombustivel",
+    "biocombustiveis"
+  )
 
-water_purification <- c("")
+water_purification <- c("water purification",
+                        "purificacao",
+                        "bioremediacao",
+                        "bioremediation",
+                        "tratamento de esgoto")
 
-air_quality_regulation <- c("")
+air_quality_regulation <- c("qualidade do ar",
+                            "air quality",
+                            "air pollutants",
+                            "poluentes do ar")
 
-coastal_protection <- c("")
+coastal_protection <- c("coastal protection",
+                        "protecao costeira",
+                        "protecao da costa",
+                        "coastal zone",
+                        "area costeira")
 
-climate_regulation <- c("")
+climate_regulation <- c("climate regulation",
+                        "regulacao do clima",
+                        "sink")
 
-weather_regulation <- c("")
+weather_regulation <- c("weather regulation",
+                        "regulacao do clima",
+                        "regulacao climatica")
 
-ocean_nourishment <- c("")
-
-life_cycle_maintenance <- c("")
-
-biological_regulation <- c("")
-
-symbolic_and_aesthetic_values <- c("")
-
-recreation_and_tourism <- c("")
-
-cognitive_effects <- c("")
+ocean_nourishment <- c("ocean nourishment")
 
 
+life_cycle_maintenance <- c("life cycle maintenance",
+                            "manutencao", "habitat",
+                            "ciclo de vida",
+                            "pollination",
+                            "polinizacao",
+                            "dispersao de semente",
+                            "seed dispersal")
 
+biological_regulation <- c("biological regulation",
+                           "regulacao biologica",
+                           "controle de patogenos",
+                           "controle biologico",
+                           "biological control")
+
+symbolic_and_aesthetic_values <- c("aesthetic values",
+                                   "symbiotic values",
+                                   "valores simbolicos",
+                                   "valor simbolico",
+                                   "valores esteticos",
+                                   "valor estetico")
+
+recreation_and_tourism <- c("recreation",
+                            "tourism",
+                            "recreação",
+                            "turismo",
+                            "lazer")
+
+cognitive_effects <- c("cognitive effects",
+                       "efeitos cognitivos")
+
+# funcao ----
 
 detect_mces <- function(mces){stringr::str_detect(df_limpo$texto_limpo,  paste(mces,collapse = '|'))}
 
