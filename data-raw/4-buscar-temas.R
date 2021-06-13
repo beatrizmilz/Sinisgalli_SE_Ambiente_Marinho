@@ -115,7 +115,7 @@ df_limpo <- df_arquivos %>%
 
 
 
-df_limpo %>%
+resultado_busca <- df_limpo %>%
   dplyr::mutate(
     p_servicos_ecosistemicos = detect_mces(servicos_ecosistemicos),
     p_food_provision = detect_mces(food_provision),
@@ -132,10 +132,11 @@ df_limpo %>%
     p_symbolic_and_aesthetic_values = detect_mces(symbolic_and_aesthetic_values),
     p_recreation_and_tourism = detect_mces(recreation_and_tourism),
     p_cognitive_effects = detect_mces(cognitive_effects)
-  ) %>%
+  )
 
-  View()
- # dplyr::filter(detectado == TRUE) %>%
-  dplyr::count(nome_arquivo)
-  # dplyr::pull(texto_limpo) %>%
-  # print()
+  View(resultado_busca)
+
+ contagem_temas <-  resultado_busca %>%
+    tidyr::pivot_longer(cols = tidyselect::starts_with("p_")) %>%
+    dplyr::filter(value == TRUE) %>%
+    dplyr::count(name, sort = TRUE)
