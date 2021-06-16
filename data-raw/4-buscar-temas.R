@@ -38,11 +38,13 @@ biotic_materials_and_biofuels <-
     "biofuels",
     "materiais bioticos",
     "biotico",
+    "material biotico",
     "biocombustivel",
     "biocombustiveis"
   )
 
 water_purification <- c("water purification",
+                        "purificacao da agua"
                         "purificacao",
                         "bioremediacao",
                         "bioremediation",
@@ -60,18 +62,24 @@ coastal_protection <- c("coastal protection",
                         "area costeira")
 
 climate_regulation <- c("climate regulation",
+                        "regulacao climatica",
                         "regulacao do clima",
+                        "clima global",
                         "sink")
 
 weather_regulation <- c("weather regulation",
                         "regulacao do clima",
+                        "clima local",
                         "regulacao climatica")
 
-ocean_nourishment <- c("ocean nourishment")
+ocean_nourishment <- c("ocean nourishment",
+                       "nutricao do oceano",
+                       "nutricao dos oceanos")
 
 
 life_cycle_maintenance <- c("life cycle maintenance",
                             "manutencao", "habitat",
+                            "manutencao do ciclo da vida",
                             "ciclo de vida",
                             "pollination",
                             "polinizacao",
@@ -89,7 +97,9 @@ symbolic_and_aesthetic_values <- c("aesthetic values",
                                    "valores simbolicos",
                                    "valor simbolico",
                                    "valores esteticos",
-                                   "valor estetico")
+                                   "valor estetico",
+                                   "simbolico e estetico",
+                                   "simbolicos e esteticos")
 
 recreation_and_tourism <- c("recreation",
                             "tourism",
