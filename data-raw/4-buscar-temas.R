@@ -174,5 +174,8 @@ resumo <-  resultado_busca %>%
     dplyr::group_by(nome_arquivo, tema) %>%
     dplyr::summarise(pagina = knitr::combine_words(num_pagina, and = " e "))
 
-
-readr::write_csv2(resumo, "data-raw/data-output/resumo_termos.csv")
+resumo %>%
+  dplyr::left_join(lista_de_arquivos[, 1:2], by = c("nome_arquivo" = "nome_limpo")) %>%
+  dplyr::rename("nome_original" = name) %>%
+  dplyr::relocate(nome_original, .before = nome_arquivo) %>%
+  readr::write_csv2("data-raw/data-output/resumo_termos.csv")
