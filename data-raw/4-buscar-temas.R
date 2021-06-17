@@ -29,7 +29,9 @@ water_storage_and_provision <-
     "marine water",
     "armazenamento de agua",
     "provisao de agua",
-    "aproveitamento de agua"
+    "aproveitamento de agua",
+    "chuva",
+    "fluxo de agua"
   )
 
 biotic_materials_and_biofuels <-
@@ -40,41 +42,51 @@ biotic_materials_and_biofuels <-
     "biotico",
     "material biotico",
     "biocombustivel",
-    "biocombustiveis"
+    "biocombustiveis",
+    "extracao de materiais",
+    "extracao de madeira"
   )
 
 water_purification <- c("water purification",
-                        "purificacao da agua"
+                        "purificacao da agua",
                         "purificacao",
+                        "autodepuracao",
                         "bioremediacao",
                         "bioremediation",
-                        "tratamento de esgoto")
+                        "tratamento de esgoto",
+                        "diluicao de esgoto",
+                        "qualidade da agua")
 
 air_quality_regulation <- c("qualidade do ar",
                             "air quality",
                             "air pollutants",
-                            "poluentes do ar")
+                            "poluentes do ar",
+                            "qualidade do ar")
 
 coastal_protection <- c("coastal protection",
                         "protecao costeira",
                         "protecao da costa",
                         "coastal zone",
-                        "area costeira")
+                        "area costeira",
+                        "coastal protection")
 
 climate_regulation <- c("climate regulation",
                         "regulacao climatica",
                         "regulacao do clima",
                         "clima global",
-                        "sink")
+                        "sink",
+                        "climate regulation")
 
 weather_regulation <- c("weather regulation",
                         "regulacao do clima",
                         "clima local",
-                        "regulacao climatica")
+                        "regulacao climatica",
+                        "weather control")
 
 ocean_nourishment <- c("ocean nourishment",
                        "nutricao do oceano",
-                       "nutricao dos oceanos")
+                       "nutricao dos oceanos",
+                       "qualidade da agua")
 
 
 life_cycle_maintenance <- c("life cycle maintenance",
@@ -152,7 +164,7 @@ resultado_busca <- df_limpo %>%
     dplyr::count(name, sort = TRUE)
 
 
-  resultado_busca %>%
+resumo <-  resultado_busca %>%
    tidyr::pivot_longer(cols = tidyselect::starts_with("p_")) %>%
    dplyr::filter(value == TRUE) %>%
     dplyr::mutate(tema = stringr::str_remove(name,"p_"),
@@ -160,5 +172,7 @@ resultado_busca <- df_limpo %>%
                   nome_arquivo = stringr::str_remove(nome_arquivo, "data-raw/1-arquivos-pdf/")) %>%
     dplyr::select(-name, -value) %>%
     dplyr::group_by(nome_arquivo, tema) %>%
-    dplyr::summarise(pagina = knitr::combine_words(num_pagina, and = " e ")) %>%
-    View()
+    dplyr::summarise(pagina = knitr::combine_words(num_pagina, and = " e "))
+
+
+readr::write_csv2(resumo, "data-raw/data-output/resumo_termos.csv")
