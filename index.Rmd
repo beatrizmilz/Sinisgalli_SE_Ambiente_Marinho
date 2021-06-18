@@ -1,0 +1,24 @@
+---
+title: "Tabela com resultados"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=FALSE}
+library(magrittr)
+resumo <- readr::read_csv2("data-raw/data-output/resumo_termos.csv")
+```
+
+
+```{r echo=FALSE}
+resumo %>%
+  dplyr::mutate(nome_original = stringi::sti_wrap(nome_original, 
+                                                  width = 15,
+                                                  whitespace_only = FALSE)) %>%
+  dplyr::select(-nome_arquivo) %>%
+  DT::datatable()
+```
+
